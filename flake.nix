@@ -11,7 +11,18 @@
     in {
       devShells.${system}.default = pkgs.mkShell {
         buildInputs = with pkgs;
-          [ (python311.withPackages (ps: with ps; [ boto3 ])) ];
+          [
+            (python311.withPackages (ps:
+              with ps; [
+                boto3
+                pytest
+                pytest-cov
+                isort
+                black
+                flake8
+                mypy
+              ]))
+          ];
       };
     };
 }
